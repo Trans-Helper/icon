@@ -1,0 +1,6 @@
+[project]
+name = "svg-example"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = ["cairosvg>=2.7.0", "svg-py>=1.10.0"]
