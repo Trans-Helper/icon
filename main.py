@@ -47,8 +47,8 @@ def main():
         )
     )
     # Capital H at center (behind the pointer), drawn with rounded rects
-    hw, hh = 40, 340
-    gap = 160
+    hw, hh = 80, 680
+    gap = 320
     for x in [cx - hw - gap // 2, cx + gap // 2]:
         elements.append(
             svg.Rect(
@@ -76,7 +76,7 @@ def main():
     # 45-degree compass needle (two triangles)
     needle_angle = 45
     trig_a = math.radians(270 + needle_angle)
-    ptr_len = outer_r - 120
+    ptr_len = outer_r - 80
     ptr_width = 100
     half_w = ptr_width / 2
 
@@ -85,6 +85,18 @@ def main():
     px = math.cos(trig_a + math.pi / 2)
     py = math.sin(trig_a + math.pi / 2)
 
+    sd = 8
+    elements.append(
+        svg.Polygon(
+            points=[
+                svg.Point(cx + ptr_len * dx + sd, cy + ptr_len * dy + sd),
+                svg.Point(cx + half_w * px + sd, cy + half_w * py + sd),
+                svg.Point(cx - half_w * px + sd, cy - half_w * py + sd),
+            ],
+            fill="black",
+            opacity=0.3,
+        )
+    )
     elements.append(
         svg.Polygon(
             points=[
@@ -93,6 +105,17 @@ def main():
                 svg.Point(cx - half_w * px, cy - half_w * py),
             ],
             fill="#f5abb9",
+        )
+    )
+    elements.append(
+        svg.Polygon(
+            points=[
+                svg.Point(cx - ptr_len * dx + sd, cy - ptr_len * dy + sd),
+                svg.Point(cx - half_w * px + sd, cy - half_w * py + sd),
+                svg.Point(cx + half_w * px + sd, cy + half_w * py + sd),
+            ],
+            fill="black",
+            opacity=0.3,
         )
     )
     elements.append(
