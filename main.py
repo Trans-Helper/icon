@@ -14,7 +14,7 @@ def main():
 
     dark = "#1a1a2e"
 
-    elements = [
+    elements: list[svg.Element] = [
         svg.Rect(x=0, y=0, width=a, height=a, fill="white"),
     ]
 
@@ -77,7 +77,7 @@ def main():
     needle_angle = 45
     trig_a = math.radians(270 + needle_angle)
     ptr_len = outer_r - 120
-    ptr_width = 90
+    ptr_width = 100
     half_w = ptr_width / 2
 
     dx = math.cos(trig_a)
@@ -88,9 +88,9 @@ def main():
     elements.append(
         svg.Polygon(
             points=[
-                (cx + ptr_len * dx, cy + ptr_len * dy),
-                (cx + half_w * px, cy + half_w * py),
-                (cx - half_w * px, cy - half_w * py),
+                svg.Point(cx + ptr_len * dx, cy + ptr_len * dy),
+                svg.Point(cx + half_w * px, cy + half_w * py),
+                svg.Point(cx - half_w * px, cy - half_w * py),
             ],
             fill="#f5abb9",
         )
@@ -98,9 +98,9 @@ def main():
     elements.append(
         svg.Polygon(
             points=[
-                (cx - ptr_len * dx, cy - ptr_len * dy),
-                (cx - half_w * px, cy - half_w * py),
-                (cx + half_w * px, cy + half_w * py),
+                svg.Point(cx - ptr_len * dx, cy - ptr_len * dy),
+                svg.Point(cx - half_w * px, cy - half_w * py),
+                svg.Point(cx + half_w * px, cy + half_w * py),
             ],
             fill="#5bcffa",
         )
